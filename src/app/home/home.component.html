@@ -1,0 +1,41 @@
+<div class="container">
+    <h1>Welcome Back {{ user.name }}! Here are your latest updates.</h1>
+  
+    <!-- User Information Section -->
+    <div class="user-info">
+      <p><strong>Name:</strong> {{ user.name }}</p>
+      <p><strong>Position:</strong> {{ user.position }}</p>
+      <p><strong>Reporting To:</strong> {{ user.reportingTo }}</p>
+      <p><strong>Corporate Level:</strong> {{ user.corporateLevel }}</p>
+    </div>
+  
+    <!-- Vacation and Leave Requests -->
+    <div class="requests">
+      <div class="vacation-requests">
+        <fa-icon [icon]="['fas', 'plane']"></fa-icon>
+        <p>Vacation Requests: {{ user.vacationRequests }}</p>
+      </div>
+      <div class="leave-requests">
+        <fa-icon [icon]="['fas', 'umbrella-beach']"></fa-icon>
+        <p>Leave Requests: {{ user.leaveRequests }}</p>
+      </div>
+    </div>
+  
+    <!-- Search Box -->
+    <div>
+      <input type="text" [(ngModel)]="searchTerm" placeholder="Search vacation requests..." />
+    </div>
+  
+    <!-- Vacation Requests Section -->
+    <div class="vacation-section">
+      <div *ngFor="let request of vacationRequests">
+        <p><strong>Name:</strong> <span [innerHTML]="request.name | highlight: searchTerm"></span></p>
+        <p><strong>Date Submitted:</strong> {{ request.dateSubmitted }}</p>
+   
+      </div>
+    </div>
+  </div>
+  
+  <fa-icon [icon]="['fas', 'plane']"></fa-icon>
+<fa-icon [icon]="['fas', 'umbrella-beach']"></fa-icon>
+
